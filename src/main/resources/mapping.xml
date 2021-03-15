@@ -1,0 +1,34 @@
+<beanio xmlns="http://www.beanio.org/2012/03">
+    <stream name="gefuFile" format="csv">
+        <parser>
+            <property name="delimiter" value="|" />
+        </parser>
+        <record name="header" minOccurs="1" maxOccurs="1" class="com.example.gefu.dto.GefuHeaderDTO">
+            <field name="headerOne" rid="true" literal="01" ignore="true"/>
+            <field name="fileDate" format="MMddyyyy" />
+            <field name="headerThree" literal="Y" ignore="true" />
+        </record>
+        <record  name="transaction" minOccurs="0" maxOccurs="unbounded" class="com.example.gefu.dto.GefuTransactionDTO">
+            <field name="recordOne" rid="true" literal="02" ignore="true" />
+            <field name="recordTwo" literal="01" ignore="true" />
+            <field name="debitAccountNumber" />
+            <field name="recordFour" literal="3008" ignore="true"/>
+            <field name="recordFive" literal="01" ignore="true"/>
+            <field name="creditAccountNumber" />
+            <field name="recordSeven" literal="0" ignore="true" />
+            <field name="recordEight" literal="N" ignore="true"/>
+            <field name="transactionDate" format="MMddyyyy"/>
+            <field name="valueDate" format="MMddyyyy"/>
+            <field name="currencyCode" />
+            <field name="amount" />
+            <field name="beneficiaryAccount" />
+            <field name="recordCount" />
+            <field name="paymentDateInWords" />
+        </record>
+        <record name="footer" minOccurs="1" maxOccurs="1" class="com.example.gefu.dto.GefuFooterDTO">
+            <field name="recordType" rid="true" literal="03" ignore="true"/>
+            <field name="recordCount" />
+            <field name="totalAmount" />
+        </record>
+    </stream>
+</beanio>
